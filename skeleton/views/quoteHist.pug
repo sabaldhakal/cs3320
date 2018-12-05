@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  header
+    h2 Fuel Quote
+  section
+    nav
+      ul
+        li
+          a(href="/") Home
+        li
+          a(href='clientInfo') Client Information
+        li
+          a(href='reqQuote') Request a Quote
+        li
+          a.active(href='quoteHist') Quote History
+    table
+      tbody
+        tr
+          th Request Date
+          th Delivery Date
+          th Gallons
+          th Rate
+          th Total Price
+        tr
+          each quote in quoteHist
+            td #{quote.requestDate}
+            td #{quote.deliveryDate}
+            td #{quote.gallons}
+            td $2.15
+            td #{quote.total}
+
+  footer
+    p Fuel Prediction

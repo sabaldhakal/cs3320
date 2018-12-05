@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  header
+    h2 Fuel Quote
+  section
+    nav
+      ul
+        li
+          a.active(href='') Home
+        li
+          a(href='catalog/clientInfo') Client Information
+        li
+          a(href='catalog/newQuote') Request a Quote
+        li
+          a(href='catalog/quoteHist') Quote History
+    article
+      p
+        | This is a fuel prediction application that will be able to predict fuel prices based on various criteria.
+  footer
+    p Fuel Prediction
