@@ -60,6 +60,7 @@ block content
       }
       select
       {
+      padding: 12px 20px;
       width: 25%;
       font-size:15px;
       }
@@ -81,6 +82,18 @@ block content
       background-color: #f2f2f2;
       padding: 20px;
       }
+      .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      }
       .col-25 {
       float: left;
       width: 25%;
@@ -95,6 +108,8 @@ block content
       float: left;
       width: 25%;
       margin-top: 6px;
+      }
+      #myDIV {
       }
       /* Clear floats after the columns */
       .row:after {
@@ -127,7 +142,7 @@ block content
         .col-25
           label(for='gallons') Gallons Requested:
         .col-75
-          input#gallonsRequested(type='number', name='gallonsRequested', min='1', placeholder='Gallons', required)
+          input#gallonsRequested(type='number', name='gallonsRequested', min='1', placeholder='Gallons', onchange='getTotal()', required)
       .row
         .col-25
           label(for='deliveryDate') Delivery Date:
@@ -138,11 +153,12 @@ block content
           label(for='deliveryLocation') Delivery Location:
         .col-75
           input#deliveryAddress(type='text', name='deliveryAddress', placeholder='Street', required)
+        .col-75
           input#deliveryCity(type='text', name='deliveryCity', placeholder='City', required)
           br
           .col-100
             input#deliveryZipCode(type='text', name='deliveryZipCode', placeholder='ZipCode', required)
-            select
+            select#deliveryState(onchange="document.getElementById('suggestedPrice').innerHTML = suggestions()")
               option.title State
               option(value='AL') Alabama
               option(value='AK') Alaska
@@ -210,18 +226,48 @@ block content
           label(for='deliveryContactEmail') Delivery Contact Person Email:
         .col-75
           input#deliveryContactEmail(type='Email', name='deliveryContactEmail', placeholder='Email', required)
-      .row
+      .myDIV
         .col-25
-          label(for='Suggestion') Suggested Price per Gallon:
+          label(for="Suggestion") Suggested Price per Gallon:
+        .col-75  
+          | #{suggestedPrice}
+        .col-25  
+          label(for="Total Due") Total Amount Due:
         .col-75
-          ins(type='text')
-      .row
-        .col-25
-          label(for='Price') Total Amount Due:
+          | #{totalAmountDue}
         .col-75
-          ins
+          button(onclick='myFunction()') Get price
       .row
         input(type='submit', value='Submit')
-
+    script.
+      function myFunction() {
+      var x = document.getElementById("myDIV");
+      if (x.style.display === "none") {
+          x.style.display = "block";
+      } else {
+          x.style.display = "none";
+      }
+      }
+      function suggestions() {
+      var y = document.getElementById("deliveryState").value;
+      var pattern = /[A-F]/;
+      var result = y.match(pattern);
+      if (result == true){
+        suggestedPrice.value = 2.59;
+        document.getElementById("suggestedPrice").innerHTML = suggestedPrice.value.toFixed(2);
+      return 2.59;
+      }
+      else {
+        suggestedPrice.value = 2.20;
+        document.getElementById("suggestedPrice").innerHTML = suggestedPrice.value.toFixed(2);
+      return 2.20;
+      }
+      }
+      function getTotal() {
+      var gallonsRequested = document.getElementById("gallonsRequested").value;
+      var suggestedPrice = suggestions();
+      totalAmountDue.value = gallonsRequested*suggestedPrice;
+      document.getElementById("totalAmountDue").innerHTML = totalAmountDue.value.toFixed(2);
+      }
   footer
-    p Fuel Prediction
+    p Fuel Prediction 

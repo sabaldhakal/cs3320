@@ -15,7 +15,7 @@ var expressSession = require('express-session');
 var session = require('express-session');
 var passport = require('passport');
 var config = require('./config/database');
-
+var moment = require('moment');
 
 var app = express();
 app.set('trust proxy', 1) //trust first proxy
@@ -87,14 +87,13 @@ app.use(expressValidator({
 // Passport Config
 require('./config/passport')(passport);
 // Passport Middleware
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.get('*', function(req, res, next){
   res.locals.user = req.user || null;
   next();
 });
-
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

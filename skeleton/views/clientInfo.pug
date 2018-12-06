@@ -122,40 +122,40 @@
 //-         li
 //-           a(href='quoteHist') Quote History
 //-     each client in client_list
-//-     form(action='/clientInfo/submit', method='post')
-//-       .row
-//-         .col-25
-//-           label(for='full_name') Name: #{client.full_name}
-//-           //- input#full_name(type='text', name='full_name', value= client.full_name)
-//-       .row
-//-         .col-25
-//-           label(for='address') Address: #{client.address}
-//-           //- input#address(type='text', name='address', value= client.address)
-//-       .row
-//-         .col-25
-//-           label(for='city') City: #{client.city}
-//-           //- input#city(type='text', name='city', value= client.city)
-//-       .row
-//-         .col-25
-//-           label(for='state') State: #{client.state}
-//-           //- input#state(type='text', name='state', value= client.state)
-//-       .row
-//-         .col-25
-//-           label(for='zip_code') Zip Code: #{client.zip_code}
-//-           //- input#zip_code(type='text', name='zip_code', value= client.zip_code)
-//-       .row
-//-         .col-25
-//-           label(for='phone') Phone: #{client.phone}
-//-           //- input#phone(type='text', name='phone', value= client.phone)
-//-       .row
-//-         .col-25
-//-           label(for='email') Email: #{client.email}
-//-           //- input#email(type='Email', name='email', value= client.email)
-//-       .row
-//-           input(type='submit', value='UPDATE')
+//-       form(action='/clientInfo/update/'+ client._id, method='post')
+//-         .row
+//-           .col-25
+//-             label(for='full_name') Name:
+//-             input#full_name(type='text', name='full_name', value= client.full_name)
+//-         .row
+//-           .col-25
+//-             label(for='address') Address: 
+//-             input#address(type='text', name='address', value= client.address)
+//-         .row
+//-           .col-25
+//-             label(for='city') City: 
+//-             input#city(type='text', name='city', value= client.city)
+//-         .row
+//-           .col-25
+//-             label(for='state') State: 
+//-             input#state(type='text', name='state', value= client.state)
+//-         .row
+//-           .col-25
+//-             label(for='zip_code') Zip Code: 
+//-             input#zip_code(type='text', name='zip_code', value= client.zip_code)
+//-         .row
+//-           .col-25
+//-             label(for='phone') Phone: 
+//-             input#phone(type='text', name='phone', value= client.phone)
+//-         .row
+//-           .col-25
+//-             label(for='email') Email:
+//-             input#email(type='Email', name='email', value= client.email)
+//-         .row
+//-             input(type='submit', value='UPDATE')
 
-//-   footer
-//-     p Fuel Prediction
+//-     footer
+//-       p Fuel Prediction
 
 
 extends layout

@@ -20,14 +20,14 @@ block content
           th Request Date
           th Delivery Date
           th Gallons
-          th Rate
+          th Suggested Price
           th Total Price
       each quote in quote_list
         tr
-          td #{quote.requestDate}
-          td #{quote.deliveryDate}
+          td #{quote.requestDate_formatted}
+          td #{quote.deliveryDate_formatted}
           td #{quote.gallonsRequested}
-          td #{quote.rate}
+          td #{quote.suggestedPrice}
           td #{quote.totalAmountDue}
       else
         tr

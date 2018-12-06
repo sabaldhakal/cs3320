@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
-
+var moment = require('moment');
 var quoteSchema = new Schema(
   {
     //client: {type: Schema.Types.ObjectID, ref: 'Client', required: true},
@@ -19,6 +19,21 @@ var quoteSchema = new Schema(
     totalAmountDue: {type: Number}
   }
 );
+
+
+quoteSchema
+.virtual('requestDate_formatted')
+.get(function () {
+  return moment(this.requestDate).format('L');
+});
+
+quoteSchema
+.virtual('deliveryDate_formatted')
+.get(function () {
+  return moment(this.deliveryDate).format('L');
+});
+
+
 
 /*// Virtual for author's full name
 AuthorSchema

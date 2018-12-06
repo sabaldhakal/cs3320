@@ -21,5 +21,8 @@ exports.client_detail = function(req, res, next) {
       //Successful, so render
       res.render('clientInfo', { title: 'Client Information', client_list: list_clients });
     });
-
 };
+
+// exports.client_update_get = function(req, res, next) {   
+//     res.render('clientInfo', { title: 'Update client' });
+//   };
