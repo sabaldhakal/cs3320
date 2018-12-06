@@ -71,8 +71,8 @@ exports.quote_create_post = [
               };
             
             var requestDate = req.requestTime;
-            // var suggestedPrice = 1.99;
-            // var totalAmountDue = req.body.gallonsRequested*suggestedPrice;
+            var suggestedPrice = 2.29;
+            var totalAmountDue = req.body.gallonsRequested*suggestedPrice;
             
             // Create a Quote object with escaped and trimmed data.
             var quote = new Quote(
@@ -87,8 +87,8 @@ exports.quote_create_post = [
                     deliveryContactName: req.body.deliveryContactName,
                     deliveryContactPhone: req.body.deliveryContactPhone,
                     deliveryContactEmail: req.body.deliveryContactEmail,
-                    suggestedPrice: req.body.suggestedPrice,
-                    totalAmountDue: req.body.totalAmountDue
+                    suggestedPrice: suggestedPrice,
+                    totalAmountDue: totalAmountDue
                 });
             quote.save(function (err) {
                 if (err) { return next(err); }

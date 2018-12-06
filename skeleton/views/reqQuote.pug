@@ -109,7 +109,7 @@ block content
       width: 25%;
       margin-top: 6px;
       }
-      #myDIV {
+      .myDIV {
       }
       /* Clear floats after the columns */
       .row:after {
@@ -225,49 +225,73 @@ block content
         .col-25
           label(for='deliveryContactEmail') Delivery Contact Person Email:
         .col-75
-          input#deliveryContactEmail(type='Email', name='deliveryContactEmail', placeholder='Email', required)
-      .myDIV
+          input#deliveryContactEmail(type='Email', name='deliveryContactEmail', placeholder='Email', required) 
+
+      .row
         .col-25
           label(for="Suggestion") Suggested Price per Gallon:
-        .col-75  
-          | #{suggestedPrice}
-        .col-25  
+        .col-75
+          ins#suggestedPrice(type='text', name='suggestedPrice')
+            .row
+      .row     
+        .col-25
           label(for="Total Due") Total Amount Due:
         .col-75
-          | #{totalAmountDue}
-        .col-75
-          button(onclick='myFunction()') Get price
-      .row
-        input(type='submit', value='Submit')
-    script.
-      function myFunction() {
-      var x = document.getElementById("myDIV");
-      if (x.style.display === "none") {
-          x.style.display = "block";
-      } else {
-          x.style.display = "none";
-      }
-      }
-      function suggestions() {
-      var y = document.getElementById("deliveryState").value;
-      var pattern = /[A-F]/;
-      var result = y.match(pattern);
-      if (result == true){
-        suggestedPrice.value = 2.59;
-        document.getElementById("suggestedPrice").innerHTML = suggestedPrice.value.toFixed(2);
-      return 2.59;
-      }
-      else {
-        suggestedPrice.value = 2.20;
-        document.getElementById("suggestedPrice").innerHTML = suggestedPrice.value.toFixed(2);
-      return 2.20;
-      }
-      }
-      function getTotal() {
-      var gallonsRequested = document.getElementById("gallonsRequested").value;
-      var suggestedPrice = suggestions();
-      totalAmountDue.value = gallonsRequested*suggestedPrice;
-      document.getElementById("totalAmountDue").innerHTML = totalAmountDue.value.toFixed(2);
-      }
+          ins#totalAmountDue(type='text', name='totalAmountDue')
+
+        .row
+          input(type='submit', value='Submit')
+          
+        //- .col-75
+        //-   button(onclick='myFunction()') Get price
+
+      script.
+        function myFunction() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+        }
+        function suggestions() {
+        var y = document.getElementById("deliveryState").value;
+        var pattern = /[A-F]/;
+        var result = y.match(pattern);
+        if (result == true){
+          suggestedPrice.value = 2.59;
+          document.getElementById("suggestedPrice").innerHTML = suggestedPrice.value.toFixed(2);
+        return 2.59;
+        }
+        else {
+          suggestedPrice.value = 2.20;
+          document.getElementById("suggestedPrice").innerHTML = suggestedPrice.value.toFixed(2);
+        return 2.29;
+        }
+        }
+        function getTotal() {
+        var gallonsRequested = document.getElementById("gallonsRequested").value;
+        var suggestedPrice = suggestions();
+        totalAmountDue.value = gallonsRequested*suggestedPrice;
+        document.getElementById("totalAmountDue").innerHTML = totalAmountDue.value.toFixed(2);
+        }
   footer
     p Fuel Prediction 
+
+
+
+  //- .container
+  //-     #myDIV
+  //-     .row  
+  //-       .col-75
+  //-         button(onclick="document.getElementById('suggestedPrice').innerHTML = suggestions()") Get price
+  //-     .row
+  //-       .col-25
+  //-         label(for="Suggestion") Suggested Price per Gallon:
+  //-       .col-75  
+  //-         | #{suggestedPrice}
+  //-     .row
+  //-       .col-25  
+  //-         label(for="Total Due") Total Amount Due:
+  //-       .col-75
+  //-         | #{totalAmountDue}
