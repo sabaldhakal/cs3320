@@ -6,4 +6,21 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    .container
+      != messages('message', locals)
+      if errors
+        each error, i in errors
+          div(class="alert-error") #{error.msg}
+    nav
+      .topright 
+        ul
+          if user
+            li 
+              a(href='/users/logout') Logout
+          else
+            li
+              a(href='/users/register') Register
+            li
+              a(href='/users/login') Login
+  block content
+      

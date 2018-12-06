@@ -122,26 +122,26 @@ block content
         li
           a(href='quoteHist') Quote History
   .container
-    form(method='POST' action='')
+    form(method='POST' action='/reqQuote/create')
       .row
         .col-25
-          label(for='Gallons') Gallons Requested:
+          label(for='gallons') Gallons Requested:
         .col-75
-          input#Gallons(type='number', name='gallons', min='1', placeholder='Gallons', required)
+          input#gallonsRequested(type='number', name='gallonsRequested', min='1', placeholder='Gallons', required)
       .row
         .col-25
-          label(for='Delivery') Delivery Date:
+          label(for='deliveryDate') Delivery Date:
         .col-75
-          input#Delivery(type='Date', name='deliveryDate', min='2018-09-21', placeholder='Date', required)
+          input#deliveryDate(type='Date', name='deliveryDate', min='2018-09-21', placeholder='Date', required)
       .row
         .col-25
-          label(for='Delivery') Delivery Location:
+          label(for='deliveryLocation') Delivery Location:
         .col-75
-          input#Location(type='text', name='deliveryAddress', placeholder='Street', required)
-          input#Location(type='text', name='deliveryCity', placeholder='City', required)
+          input#deliveryAddress(type='text', name='deliveryAddress', placeholder='Street', required)
+          input#deliveryCity(type='text', name='deliveryCity', placeholder='City', required)
           br
           .col-100
-            input#Location(type='text', name='deliveryZipCode', placeholder='ZipCode', required)
+            input#deliveryZipCode(type='text', name='deliveryZipCode', placeholder='ZipCode', required)
             select
               option.title State
               option(value='AL') Alabama
@@ -197,19 +197,19 @@ block content
               option(value='WY') Wyoming
       .row
         .col-25
-          label(for='Contact') Delivery Contact Person Name:
+          label(for='deliveryContactName') Delivery Contact Person Name:
         .col-75
-          input#ContactName(type='text', name='contactName', placeholder='Name', required)
+          input#deliveryContactName(type='text', name='deliveryContactName', placeholder='Name', required)
       .row
         .col-25
-          label(for='Contact') Delivery Contact Person Phone:
+          label(for='deliveryContactPhone') Delivery Contact Person Phone:
         .col-75
-          input#ContactNumber(type='text', name='deliveryContactPhone', placeholder='Phone Number', required)
+          input#deliveryContactPhone(type='text', name='deliveryContactPhone', placeholder='Phone Number', required)
       .row
         .col-25
-          label(for='Contact') Delivery Contact Person Email:
+          label(for='deliveryContactEmail') Delivery Contact Person Email:
         .col-75
-          input#ContactEmail(type='Email', name='deliveryContactEmail', placeholder='Email', required)
+          input#deliveryContactEmail(type='Email', name='deliveryContactEmail', placeholder='Email', required)
       .row
         .col-25
           label(for='Suggestion') Suggested Price per Gallon:

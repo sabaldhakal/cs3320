@@ -22,13 +22,23 @@ block content
           th Gallons
           th Rate
           th Total Price
+      each quote in quote_list
         tr
-          each quote in quoteHist
-            td #{quote.requestDate}
-            td #{quote.deliveryDate}
-            td #{quote.gallons}
-            td $2.15
-            td #{quote.total}
-
+          td #{quote.requestDate}
+          td #{quote.deliveryDate}
+          td #{quote.gallonsRequested}
+          td #{quote.rate}
+          td #{quote.totalAmountDue}
+      else
+        tr
+          td No quotes.
+          td No quotes.
+          td No quotes.
+          td No quotes.
+          td No quotes.
+          td No quotes.
+        //- tr
+        //-   each quote in quoteHist
+        //-     td= quote
   footer
     p Fuel Prediction

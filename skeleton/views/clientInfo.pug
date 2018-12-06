@@ -1,8 +1,168 @@
+//- extends layout
+
+//- block content
+//-   header
+//-     h2 Fuel Quote
+//-     style.
+//-       * {
+//-       box-sizing: border-box;
+//-       }
+//-       ins [type=text], select, textarea {
+//-       width: 50%;
+//-       padding: 12px;
+//-       border: 1px solid #ccc;
+//-       border-radius: 4px;
+//-       resize: vertical;
+//-       }
+//-       input[type=text], select, textarea {
+//-       width: 50%;
+//-       padding: 12px;
+//-       border: 1px solid #ccc;
+//-       border-radius: 4px;
+//-       resize: vertical;
+//-       }
+//-       input[type=number], select, textarea {
+//-       width: 50%;
+//-       padding: 12px;
+//-       border: 1px solid #ccc;
+//-       border-radius: 4px;
+//-       resize: vertical;
+//-       }
+//-       input[type=Date], select, textarea {
+//-       width: 50%;
+//-       padding: 12px;
+//-       border: 1px solid #ccc;
+//-       border-radius: 4px;
+//-       resize: vertical;
+//-       }
+//-       input[type=Email], select, textarea {
+//-       width: 50%;
+//-       padding: 12px;
+//-       border: 1px solid #ccc;
+//-       border-radius: 4px;
+//-       resize: vertical;
+//-       }
+//-       label {
+//-       padding: 12px 12px 12px 0;
+//-       display: inline-block;
+//-       }
+//-       input[type=submit] {
+//-       background-color: #4CAF50;
+//-       color: white;
+//-       padding: 12px 20px;
+//-       border: none;
+//-       border-radius: 4px;
+//-       cursor: pointer;
+//-       float: right;
+//-       }
+//-       input[type=submit]:hover {
+//-       background-color: #45a049;
+//-       }
+//-       select
+//-       {
+//-       width: 25%;
+//-       font-size:15px;
+//-       }
+//-       select optgroup
+//-       {
+//-       color:#E0E0E0;
+//-       font-size:12px;
+//-       font-weight:bold;
+//-       background-color:#0000FF;
+//-       }
+//-       select option
+//-       {
+//-       color:#0000FF;
+//-       font-weight:normal;
+//-       background-color:#FFFFFF;
+//-       }
+//-       .container {
+//-       border-radius: 5px;
+//-       background-color: #f2f2f2;
+//-       padding: 20px;
+//-       }
+//-       .col-25 {
+//-       float: left;
+//-       width: 25%;
+//-       margin-top: 6px;
+//-       }
+//-       .col-75 {
+//-       float: left;
+//-       width: 75%;
+//-       margin-top: 6px;
+//-       }
+//-       .col-50 {
+//-       float: left;
+//-       width: 50%;
+//-       margin-top: 6px;
+//-       }
+//-       /* Clear floats after the columns */
+//-       .row:after {
+//-       content: "";
+//-       display: table;
+//-       clear: both;
+//-       }
+//-       /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+//-       @media screen and (max-width: 600px) {
+//-       .col-25, .col-75, .col-50, input[type=submit] {
+//-       width: 100%;
+//-       margin-top: 0;
+//-       }
+//-       }
+
+//-   section
+//-     nav
+//-       ul
+//-         li
+//-           a(href="/") Home
+//-         li
+//-           a.active(href='') Client Information
+//-         li
+//-           a(href='reqQuote') Request a Quote
+//-         li
+//-           a(href='quoteHist') Quote History
+//-     each client in client_list
+//-     form(action='/clientInfo/submit', method='post')
+//-       .row
+//-         .col-25
+//-           label(for='full_name') Name: #{client.full_name}
+//-           //- input#full_name(type='text', name='full_name', value= client.full_name)
+//-       .row
+//-         .col-25
+//-           label(for='address') Address: #{client.address}
+//-           //- input#address(type='text', name='address', value= client.address)
+//-       .row
+//-         .col-25
+//-           label(for='city') City: #{client.city}
+//-           //- input#city(type='text', name='city', value= client.city)
+//-       .row
+//-         .col-25
+//-           label(for='state') State: #{client.state}
+//-           //- input#state(type='text', name='state', value= client.state)
+//-       .row
+//-         .col-25
+//-           label(for='zip_code') Zip Code: #{client.zip_code}
+//-           //- input#zip_code(type='text', name='zip_code', value= client.zip_code)
+//-       .row
+//-         .col-25
+//-           label(for='phone') Phone: #{client.phone}
+//-           //- input#phone(type='text', name='phone', value= client.phone)
+//-       .row
+//-         .col-25
+//-           label(for='email') Email: #{client.email}
+//-           //- input#email(type='Email', name='email', value= client.email)
+//-       .row
+//-           input(type='submit', value='UPDATE')
+
+//-   footer
+//-     p Fuel Prediction
+
+
 extends layout
 
 block content
   header
-    h2 Fuel Quote
+    h2=title
   section
     nav
       ul
@@ -14,10 +174,11 @@ block content
           a(href='reqQuote') Request a Quote
         li
           a(href='quoteHist') Quote History
-    ul(style='list-style-type: none') 
-      li Name: Raj Singh
-      li Address: 123 Main St, Austin, TX 78820
-      li Phone: 512-224-3335
-      li Email: raj@gmail.com
+    each client in client_list
+      ul(style='list-style-type: none') 
+        li Name: #{client.full_name}
+        li Address: #{client.address}, #{client.city}, #{client.state}, #{client.zip_code}
+        li Phone: #{client.phone}
+        li Email: #{client.email}
   footer
     p Fuel Prediction
